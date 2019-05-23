@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas">当前浏览器不支持</canvas>
+</body>
+<script>
+    window.onload = function () {
+        let canvas = document.getElementById("canvas");
+
+        console.log(window);
+        canvas.width = window.innerWidth - 18;
+        canvas.height = window.innerHeight - 18;
+        let ctx = canvas.getContext("2d");
+        // ctx.fillStyle="rgb(200,0,0)";
+        // ctx.fillRect(10,10,55,50);
+        // ctx.fillStyle="rgba(0,0,200,0.5)";
+        // ctx.fillRect(30,30,55,50)
+
+
+
+
+        // ctx.fillRect(25,25,100,100);
+        // ctx.clearRect(45,45,60,60);
+        // ctx.strokeRect(50,50,50,50)
+
+
+
+        // 话图形
+        // ctx.beginPath();
+        // ctx.moveTo(10,10);
+        // ctx.lineTo(20,20)
+        // ctx.lineTo(20,120)
+        // ctx.lineTo(203,23)
+        // ctx.fill();
+
+
+
+
+
+
+
+        //   画表情
+        // ctx.beginPath();
+        // ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // 绘制
+        // ctx.moveTo(110, 75);
+        // ctx.arc(75, 75, 35, 0, Math.PI, false);   // 口(顺时针)
+        // ctx.moveTo(65, 65);
+        // ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // 左眼
+        // ctx.moveTo(95, 65);
+        // ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // 右眼
+        // ctx.stroke();
+
+
+
+        // 画圆弧
+        // ctx.beginPath();
+        // ctx.arc(50,50,40,0,Math.PI*0.5,true);
+        // ctx.fill()
+
+
+
+
+
+
+        // 二次贝塞尔曲线
+        //  ctx.beginPath();
+        //  ctx.moveTo(75,25);
+        //  ctx.quadraticCurveTo(25,25,25,62.5);
+        //  ctx.quadraticCurveTo(25,100,50,100);
+        //  ctx.quadraticCurveTo(50,120,30,125);
+        //  ctx.quadraticCurveTo(60,120,65,100);
+        //  ctx.quadraticCurveTo(125,100,125,62.5);
+        //  ctx.quadraticCurveTo(125,25,75,25);
+        //  ctx.stroke();
+
+
+
+
+
+
+        //三次贝塞尔曲线
+        // ctx.beginPath();
+        // ctx.moveTo(75, 40);
+        // ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+        // ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+        // ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
+        // ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+        // ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+        // ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
+        // ctx.fill();
+
+
+
+
+        // 透明度
+        // 画背景
+        // ctx.fillStyle = '#FD0';
+        // ctx.fillRect(0, 0, 75, 75);
+        // ctx.fillStyle = '#6C0';
+        // ctx.fillRect(75, 0, 75, 75);
+        // ctx.fillStyle = '#09F';
+        // ctx.fillRect(0, 75, 75, 75);
+        // ctx.fillStyle = '#F30';
+        // ctx.fillRect(75, 75, 75, 75);
+        // ctx.fillStyle = '#FFF';
+
+        // // 设置透明度值
+        // ctx.globalAlpha = 0.2;
+
+        // // 画半透明圆
+        // for (var i = 0; i < 7; i++) {
+        //     ctx.beginPath();
+        //     ctx.arc(75, 75, 10 + 10 * i, 0, Math.PI * 2, true);
+        //     ctx.fill();
+        // }
+
+
+
+
+
+
+
+        // 文字
+        // ctx.shadowOffsetX = 2;
+        // ctx.shadowOffsetY = 2;
+        // ctx.shadowBlur = 2;
+        // ctx.shadowColor = "rgba(200, 0, 0, 0.5)";
+
+        // ctx.font = "60px Times New Roman";
+        // ctx.fillStyle = "Black";
+        // ctx.fillText("Sample String", 5, 80);
+
+
+
+
+        // 文本
+        // ctx.font = "48px serif";
+        // ctx.fillText("Hello world", 10, 50);
+        // ctx.strokeText("Hello world", 10, 150);
+
+
+
+        // var img = new Image();   // 创建一个<img>元素
+
+        // img.src = 'http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg';
+
+
+        // img.onload = function () {
+        //     ctx.drawImage(img, 600, 270, 180, 170, 0, 0, 180, 170);
+        // }
+
+
+
+// 太阳系
+var sun = new Image();
+var moon = new Image();
+var earth = new Image();
+function init(){
+  sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
+  moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+  earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
+  window.requestAnimationFrame(draw);
+}
+
+function draw() {
+  var ctx = document.getElementById('canvas').getContext('2d');
+
+  ctx.globalCompositeOperation = 'destination-over';
+  ctx.clearRect(0,0,300,300); // clear canvas
+
+  ctx.fillStyle = 'rgba(0,0,0,0.4)';
+  ctx.strokeStyle = 'rgba(0,153,255,0.4)';
+  ctx.save();
+  ctx.translate(150,150);
+
+  // Earth
+  var time = new Date();
+  ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+  ctx.translate(105,0);
+  ctx.fillRect(0,-12,50,24); // Shadow
+  ctx.drawImage(earth,-12,-12);
+
+  // Moon
+  ctx.save();
+  ctx.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+  ctx.translate(0,28.5);
+  ctx.drawImage(moon,-3.5,-3.5);
+  ctx.restore();
+
+  ctx.restore();
+  
+  ctx.beginPath();
+  ctx.arc(150,150,105,0,Math.PI*2,false); // Earth orbit
+  ctx.stroke();
+ 
+  ctx.drawImage(sun,0,0,300,300);
+
+  window.requestAnimationFrame(draw);
+}
+
+init();
+
+
+    }
+
+
+</script>
+
+</html>
